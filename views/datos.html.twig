@@ -1,0 +1,19 @@
+<h1>Primer Dato</h1>
+<hr>
+Longitud : {{ datos.first.longitude }}<br>
+Latitud  : {{ datos.first.latitude }}<br>
+<hr>
+
+<h1>Todos los datos</h1>
+<hr>
+{% for dato in datos.all %}
+Longitud : {{ datos.first.longitude }}<br>
+Latitud  : {{ datos.first.latitude }}<br>
+<hr>
+{% endfor %}
+
+<h1>Datos que retorna el Geocoder</h1>
+<hr>
+<pre>
+{{ dump(datos) }}
+</pre>

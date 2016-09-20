@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<title>El Mapa</title>
+
+		<meta name="generator" content="Bootply" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+		<link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet">
+		<!--[if lt IE 9]>
+			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link href="css/styles.css" rel="stylesheet">
+
+	</head>
+<body>
+
+
+<!-- barra superior -->
+<div class="navbar navbar-custom navbar-fixed-top">
+  <div class="navbar-header">
+
+    <!-- nombre del sitio/empresa -->
+    <a class="navbar-brand" href="#">
+      <i class="glyphicon glyphicon-fire"></i> El Mapa
+    </a>
+
+    <!-- botón que se muestra en pantallas pequeñas -->
+    <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </a>
+  </div>
+
+  <!-- elementos que se colapsan -->
+  <div class="navbar-collapse collapse">
+
+    <!-- formulario de búsqueda -->
+    <form class="navbar-form" method="post" action="{{ url('doGeocode') }}">
+      <div class="form-group" style="display:inline;">
+        <div class="input-group col-xs-8">
+          <input type="text" class="form-control"
+                 name="lugar"
+                 placeholder="Que quiere, su merced ?">
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="submit">
+              <span class="glyphicon glyphicon-search"></span>
+            </button>
+          </span>
+        </div>
+      </div>
+    </form>
+
+  </div>
+</div>
+
+<!-- fondo del mapa -->
+<div id="map-canvas"></div>
+
+<div class="container-fluid" id="main">
+  <div class="row">
+  	<div class="col-xs-8" id="left">
+
+      <!-- item de la lista -->
+      <div class="panel panel-default">
+        <div class="panel-heading"><a href="">Lugar</a></div>
+      </div>
+      <p>Descripción.</p>
+
+      <hr>
+      <!-- /item de la lista -->
+
+    </div>
+    <div class="col-xs-4"><!--map-canvas will be postioned here--></div>
+
+  </div>
+</div>
+<!-- end template -->
+
+	<!-- script references -->
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.js"></script>
+		<script src="//maps.googleapis.com/maps/api/js?sensor=false&extension=.js&output=embed"></script>
+		<script src="js/scripts.js"></script>
+	</body>
+</html>
