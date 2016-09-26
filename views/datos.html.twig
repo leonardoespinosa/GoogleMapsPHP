@@ -7,9 +7,12 @@ Latitud  : {{ datos.first.latitude }}<br>
 <h1>Todos los datos</h1>
 <hr>
 {% for dato in datos.all %}
-Longitud : {{ datos.first.longitude }}<br>
-Latitud  : {{ datos.first.latitude }}<br>
-<hr>
+  Longitud : {{ dato.longitude }}<br>
+  Latitud  : {{ dato.latitude }}<br>
+  calle : {{dato.streetName}}<br>
+  Ciudad : {{dato.locality}}<br>
+  Pais : {{dato.country}}<br>
+  <hr>
 {% endfor %}
 
 <h1>Datos que retorna el Geocoder</h1>

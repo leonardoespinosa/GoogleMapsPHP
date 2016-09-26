@@ -32,11 +32,19 @@ if ( substr($_SERVER["REQUEST_URI"], -1) == '/' ) {
 // Rutas
 // =====
 
+$app->get('/', function() use ($app){
+  return $app->redirect(
+    $app['url_generator']->generate('formulario')
+  );
+});
+
 // la ruta "/" muestra la pantalla de inicio
-$app->get('/', function() use($app) {
+$app->get('/do', function() use($app) {
 
   // muestra la plantilla views/index.html.twig
-  return $app['twig']->render('index.html.twig');
+  return $app['twig']->render('index.html.twig', array(
+     'datos' => array( )
+  ));
 
   // al usar bind define el nombre 'formulario'
   // en las plantillas es posible incluir un link usando url('formulario')
@@ -46,7 +54,7 @@ $app->get('/', function() use($app) {
 
 // la ruta "/doGeocode" recibe los datos del formulario
 // note que se recibe $request como parámetro
-$app->post('/doGeocode', function(Request $request) use($app) {
+$app->post('/do', function(Request $request) use($app) {
 
   // toma los datos de la petición web
   $lugar = $request->get('lugar');
@@ -58,15 +66,15 @@ $app->post('/doGeocode', function(Request $request) use($app) {
 
   // datos del primer resultado
   $datos    = $geocoder->geocode($lugar);
-  $latitud = $datos->first()->getLatitude();
-  $longitud  = $datos->first()->getLongitude();
+//  $latitud = $datos->first()->getLatitude();
+//  $longitud  = $datos->first()->getLongitude();
 
   // muestra la plantilla views/datos.html.twig
   // envia los datos a la plantilla
-  return $app['twig']->render('datos.html.twig', array(
-      'datos'   => $datos
+  return $app['twig']->render('index.html.twig', array(
+      'datos'   => $datos->all()
     ));
-    
+
 })->bind('doGeocode');
 
 
